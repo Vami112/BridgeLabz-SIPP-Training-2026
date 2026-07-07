@@ -1,0 +1,60 @@
+import java.util.*;
+
+abstract class WarehouseItem {
+    String name;
+
+    WarehouseItem(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
+}
+
+class Electronics extends WarehouseItem {
+    Electronics(String name) {
+        super(name);
+    }
+}
+
+class Groceries extends WarehouseItem {
+    Groceries(String name) {
+        super(name);
+    }
+}
+
+class Furniture extends WarehouseItem {
+    Furniture(String name) {
+        super(name);
+    }
+}
+
+class Storage<T extends WarehouseItem> {
+    ArrayList<T> list = new ArrayList<>();
+
+    void add(T item) {
+        list.add(item);
+    }
+
+    List<T> getItems() {
+        return list;
+    }
+}
+
+public class Question1 {
+
+    static void display(List<? extends WarehouseItem> list) {
+        for (WarehouseItem i : list)
+            System.out.println(i);
+    }
+
+    public static void main(String[] args) {
+
+        Storage<Electronics> e = new Storage<>();
+        e.add(new Electronics("Laptop"));
+        e.add(new Electronics("Mobile"));
+
+        display(e.getItems());
+    }
+}

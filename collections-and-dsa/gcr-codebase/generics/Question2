@@ -1,0 +1,64 @@
+import java.util.*;
+
+class BookCategory {
+    String name;
+
+    BookCategory(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
+}
+
+class ClothingCategory {
+    String name;
+
+    ClothingCategory(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
+}
+
+class Product<T> {
+    String productName;
+    T category;
+    double price;
+
+    Product(String productName, T category, double price) {
+        this.productName = productName;
+        this.category = category;
+        this.price = price;
+    }
+
+    public String toString() {
+        return productName + " " + category + " " + price;
+    }
+}
+
+public class Question2 {
+
+    static <T extends Product<?>> void applyDiscount(T p, double per) {
+        p.price = p.price - (p.price * per / 100);
+    }
+
+    public static void main(String[] args) {
+
+        ArrayList<Product<?>> list = new ArrayList<>();
+
+        Product<BookCategory> b = new Product<>("Java Book", new BookCategory("Programming"), 500);
+        Product<ClothingCategory> c = new Product<>("Shirt", new ClothingCategory("Men"), 1000);
+
+        applyDiscount(b, 10);
+
+        list.add(b);
+        list.add(c);
+
+        for (Product<?> i : list)
+            System.out.println(i);
+    }
+}
