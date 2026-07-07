@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class Question3 {
+    public static void main(String[] args) {
+
+        HashSet<String> set = new HashSet<>();
+
+        set.add("riya@gmail.com");
+        set.add("aman@gmail.com");
+        set.add("riya@gmail.com");
+
+        System.out.println("Registered Participants");
+
+        for (String s : set)
+            System.out.println(s);
+
+        System.out.println("Total Participants : " + set.size());
+    }
+}

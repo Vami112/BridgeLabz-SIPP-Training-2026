@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class Question2 {
+    public static void main(String[] args) {
+
+        ArrayList<String> vehicles = new ArrayList<>();
+
+        vehicles.add("UP32AB1234");
+        vehicles.add("UP32CD5678");
+        vehicles.add("UP32EF1111");
+
+        vehicles.remove("UP32CD5678");
+
+        if (vehicles.contains("UP32AB1234"))
+            System.out.println("Vehicle Found");
+        else
+            System.out.println("Vehicle Not Found");
+
+        System.out.println("Parked Vehicles");
+
+        for (String v : vehicles)
+            System.out.println(v);
+
+        System.out.println("Total Slots Occupied : " + vehicles.size());
+    }
+}

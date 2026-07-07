@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Question4 {
+    public static void main(String[] args) {
+
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+
+        addAttendance(map, "Java", "Riya");
+        addAttendance(map, "Java", "Aman");
+        addAttendance(map, "Java", "Riya");
+        addAttendance(map, "Python", "Rahul");
+        addAttendance(map, "Python", "Riya");
+
+        for (String subject : map.keySet()) {
+            System.out.println(subject + " : " + map.get(subject));
+            System.out.println("Total Students : " + map.get(subject).size());
+        }
+    }
+
+    static void addAttendance(HashMap<String, ArrayList<String>> map, String subject, String student) {
+
+        if (!map.containsKey(subject))
+            map.put(subject, new ArrayList<>());
+
+        ArrayList<String> list = map.get(subject);
+
+        if (!list.contains(student))
+            list.add(student);
+    }
+}
