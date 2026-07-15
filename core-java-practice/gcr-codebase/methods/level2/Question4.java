@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+class Question4 {
+
+    static double convertKmToMiles(double km) {
+        return km * 0.621371;
+    }
+
+    static double convertMilesToKm(double miles) {
+        return miles * 1.60934;
+    }
+
+    static double convertMetersToFeet(double meters) {
+        return meters * 3.28084;
+    }
+
+    static double convertFeetToMeters(double feet) {
+        return feet * 0.3048;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double n = sc.nextDouble();
+
+        System.out.println(convertKmToMiles(n));
+        System.out.println(convertMilesToKm(n));
+        System.out.println(convertMetersToFeet(n));
+        System.out.println(convertFeetToMeters(n));
+    }
+}
