@@ -1,0 +1,120 @@
+abstract class Vehicle {
+    private String vehicleNumber;
+    private String vehicleType;
+
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
+    }
+
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    abstract double calculateRentalCost(int days);
+
+    void displayVehicleInfo() {
+        System.out.println("Number : " + vehicleNumber);
+        System.out.println("Type : " + vehicleType);
+    }
+}
+
+class Car extends Vehicle {
+    private double dailyRate;
+
+    public double getDailyRate() {
+        return dailyRate;
+    }
+
+    public void setDailyRate(double dailyRate) {
+        this.dailyRate = dailyRate;
+    }
+
+    double calculateRentalCost(int days) {
+        return days * dailyRate;
+    }
+}
+
+class Bike extends Vehicle {
+    private double dailyRate;
+
+    public double getDailyRate() {
+        return dailyRate;
+    }
+
+    public void setDailyRate(double dailyRate) {
+        this.dailyRate = dailyRate;
+    }
+
+    double calculateRentalCost(int days) {
+        return days * dailyRate;
+    }
+}
+
+class Truck extends Vehicle {
+    private double dailyRate;
+    private double loadingCharge;
+
+    public double getDailyRate() {
+        return dailyRate;
+    }
+
+    public void setDailyRate(double dailyRate) {
+        this.dailyRate = dailyRate;
+    }
+
+    public double getLoadingCharge() {
+        return loadingCharge;
+    }
+
+    public void setLoadingCharge(double loadingCharge) {
+        this.loadingCharge = loadingCharge;
+    }
+
+    double calculateRentalCost(int days) {
+        return days * dailyRate + loadingCharge;
+    }
+}
+
+public class Question3 {
+    public static void main(String[] args) {
+
+        Car c = new Car();
+        c.setVehicleNumber("UP32A1234");
+        c.setVehicleType("Car");
+        c.setDailyRate(1000);
+
+        Bike b = new Bike();
+        b.setVehicleNumber("UP32B5678");
+        b.setVehicleType("Bike");
+        b.setDailyRate(500);
+
+        Truck t = new Truck();
+        t.setVehicleNumber("UP32C9999");
+        t.setVehicleType("Truck");
+        t.setDailyRate(2500);
+        t.setLoadingCharge(1500);
+
+        int days = 3;
+
+        c.displayVehicleInfo();
+        System.out.println("Cost : " + c.calculateRentalCost(days));
+
+        System.out.println();
+
+        b.displayVehicleInfo();
+        System.out.println("Cost : " + b.calculateRentalCost(days));
+
+        System.out.println();
+
+        t.displayVehicleInfo();
+        System.out.println("Cost : " + t.calculateRentalCost(days));
+    }
+}

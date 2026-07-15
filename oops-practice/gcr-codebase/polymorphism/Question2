@@ -1,0 +1,61 @@
+class Notification {
+    String recipientName;
+    String message;
+
+    Notification(String recipientName, String message) {
+        this.recipientName = recipientName;
+        this.message = message;
+    }
+
+    void sendNotification() {
+        System.out.println("Notification");
+    }
+}
+
+class EmailNotification extends Notification {
+
+    EmailNotification(String recipientName, String message) {
+        super(recipientName, message);
+    }
+
+    void sendNotification() {
+        System.out.println("Email sent to " + recipientName + " : " + message);
+    }
+}
+
+class SMSNotification extends Notification {
+
+    SMSNotification(String recipientName, String message) {
+        super(recipientName, message);
+    }
+
+    void sendNotification() {
+        System.out.println("SMS sent to " + recipientName + " : " + message);
+    }
+}
+
+class PushNotification extends Notification {
+
+    PushNotification(String recipientName, String message) {
+        super(recipientName, message);
+    }
+
+    void sendNotification() {
+        System.out.println("Push Notification sent to " + recipientName + " : " + message);
+    }
+}
+
+public class Question2 {
+    public static void main(String[] args) {
+
+        Notification[] n = new Notification[3];
+
+        n[0] = new EmailNotification("Riya", "Welcome");
+        n[1] = new SMSNotification("Rahul", "Your OTP is 1234");
+        n[2] = new PushNotification("Aman", "New Offer Available");
+
+        for (Notification i : n) {
+            i.sendNotification();
+        }
+    }
+}
