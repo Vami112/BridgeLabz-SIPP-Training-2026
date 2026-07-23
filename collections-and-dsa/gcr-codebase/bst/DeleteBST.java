@@ -8,7 +8,7 @@ class Node {
     }
 }
 
-public class DeleteBST {
+public class DeleteBst {
 
     Node delete(Node root, int value) {
 
