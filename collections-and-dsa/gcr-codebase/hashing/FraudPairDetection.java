@@ -1,0 +1,32 @@
+import java.util.HashMap;
+
+public class FraudPairDetection {
+
+    public static int[] findFraudPair(int[] amounts, int target) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < amounts.length; i++) {
+
+            int complement = target - amounts[i];
+
+            if (map.containsKey(complement)) {
+                return new int[]{map.get(complement), i};
+            }
+
+            map.put(amounts[i], i);
+        }
+
+        return new int[]{-1, -1};
+    }
+
+    public static void main(String[] args) {
+
+        int[] amounts = {10000, 20000, 15000, 30000};
+        int target = 35000;
+
+        int[] ans = findFraudPair(amounts, target);
+
+        System.out.println(ans[0] + " " + ans[1]);
+    }
+}

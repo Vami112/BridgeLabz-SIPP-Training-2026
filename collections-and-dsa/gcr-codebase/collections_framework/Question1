@@ -1,0 +1,56 @@
+import java.util.*;
+
+class Contact {
+    String name;
+    String phone;
+    String email;
+
+    Contact(String name, String phone, String email) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+    }
+}
+
+public class Question1 {
+    public static void main(String[] args) {
+
+        ArrayList<Contact> list = new ArrayList<>();
+        HashMap<String, Contact> map = new HashMap<>();
+        HashSet<String> set = new HashSet<>();
+
+        addContact(list, map, set, "Riya", "9876543210", "riya@gmail.com");
+        addContact(list, map, set, "Aman", "9876543211", "aman@gmail.com");
+        addContact(list, map, set, "Riya", "9876543210", "test@gmail.com");
+
+        Contact c = map.get("Riya");
+        if (c != null)
+            System.out.println("Found : " + c.name + " " + c.phone);
+
+        deleteContact(list, map, set, "Aman");
+
+        Collections.sort(list, (a, b) -> a.name.compareTo(b.name));
+
+        for (Contact i : list) {
+            System.out.println(i.name + " " + i.phone + " " + i.email);
+        }
+    }
+
+    static void addContact(ArrayList<Contact> list, HashMap<String, Contact> map, HashSet<String> set, String name, String phone, String email) {
+        if (!set.contains(phone)) {
+            Contact c = new Contact(name, phone, email);
+            list.add(c);
+            map.put(name, c);
+            set.add(phone);
+        }
+    }
+
+    static void deleteContact(ArrayList<Contact> list, HashMap<String, Contact> map, HashSet<String> set, String name) {
+        Contact c = map.get(name);
+        if (c != null) {
+            list.remove(c);
+            set.remove(c.phone);
+            map.remove(name);
+        }
+    }
+}
